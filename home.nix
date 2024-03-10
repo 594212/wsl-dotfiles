@@ -14,6 +14,8 @@
       alias cat="bat --paging=never"
       alias lzg='lazygit'
       alias lzd='lazydocker'
+      alias fzf='sk'
+      zoxide init --cmd cd fish | source
       '';
   };  
 

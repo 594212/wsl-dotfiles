@@ -15,6 +15,15 @@
     neovim
     wget
     helix
+    jq
+    fd
+    ripgrep
+    skim
+    zoxide
+    lazydocker
+    lazygit
+    starship
+    bat
   ];
 
   # This value determines the NixOS release from which the default
@@ -24,4 +33,16 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+  programs = {
+    fish.enable = true;
+    bash = {
+      interactiveShellInit = ''
+        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        then
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+        fi
+      '';
+    };
+  };
 }

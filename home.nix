@@ -1,4 +1,4 @@
-{ config, pkgs, programs, ... }:
+{ config, pkgs, inputs, programs, ... }:
 
 {
   home.username = "sl";
@@ -16,12 +16,13 @@
       alias lzd='lazydocker'
       alias fzf='sk'
       zoxide init --cmd cd fish | source
-      '';
-  };  
+    '';
+  };
 
-  home.packages =
-    [ (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; }) 
-    ];
+  home.packages = [
+    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    pkgs.nixfmt
+  ];
 
   home.file = {
 

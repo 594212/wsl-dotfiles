@@ -47,4 +47,10 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.nixvim = {
+    enable = true;
+    colorschemes.gruvbox.enable = true;
+    plugins.lightline.enable = true;
+  };
 }

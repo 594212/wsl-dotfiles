@@ -18,7 +18,15 @@
   home.packages = [
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     pkgs.nixfmt
+    (pkgs.writeShellScriptBin "lzd" (builtins.readFile ./scripts/lzd))
   ];
+
+  home.file = {
+    ".local/bin" = {
+      source = ./scripts;
+      recursive = true;
+    };
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home

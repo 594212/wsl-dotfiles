@@ -1,27 +1,27 @@
-#!/usr/bin/env fish
-set DOCKER_SOCK "/var/run/docker.sock"
-set TARGET_USER "sl"
+#!/usr/bin/env bash
+DOCKER_SOCK="/var/run/docker.sock"
+TARGET_USER="$(whoami)"
 
 # Check if the Docker socket exists
-if not test -S "$DOCKER_SOCK"
+if [ ! -S "$DOCKER_SOCK" ]; then
     echo "Error: Docker socket $DOCKER_SOCK not found."
     exit 1
-end
+fi
 
 # Check if the owner of the Docker socket is the target user
-set owner (stat -c "%U" $DOCKER_SOCK)
+owner=$(stat -c "%U" "$DOCKER_SOCK")
 
-if [ "$owner" = "$TARGET_USER" ]
-    lazydocker
+if [ "$owner" = "$TARGET_USER" ]; then
+  lazydocker
 else
     # Adjust ownership using sudo
-    sudo chown $TARGET_USER $DOCKER_SOCK
-    sudo chmod u+rw $DOCKER_SOCK
-    if test $status -eq 0
-        lazydocker
+    sudo chown "$TARGET_USER" "$DOCKER_SOCK"
+    sudo chmod u+rw "$DOCKER_SOCK"
+    if [ $? -eq 0 ]; then
+      lazydocker
     else
         echo "Error adjusting ownership."
         exit 1
-    end
-end
+    fi
+fi
 

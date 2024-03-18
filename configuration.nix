@@ -7,8 +7,36 @@
 
 { config, lib, pkgs, ... }: {
 
-  wsl.enable = true;
-  wsl.defaultUser = "sl";
+  wsl = {
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    defaultUser = "sl";
+    startMenuLaunchers = true;
+
+    wslConf.network.hostname = "wsl";
+    docker-desktop.enable = false;
+    nativeSystemd = true;
+
+    extraBin = with pkgs; [
+      # Binaries for Docker Desktop wsl-distro-proxy
+      { src = "${coreutils}/bin/mkdir"; }
+      { src = "${coreutils}/bin/cat"; }
+      { src = "${coreutils}/bin/whoami"; }
+      { src = "${coreutils}/bin/ls"; }
+      { src = "${busybox}/bin/addgroup"; }
+      { src = "${su}/bin/groupadd"; }
+      { src = "${su}/bin/usermod"; }
+    ];
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+
+    autoPrune.enable = true;
+
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     git

@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 set DOCKER_SOCK "/var/run/docker.sock"
-set TARGET_USER "sul"
+set TARGET_USER "sl"
 
 # Check if the Docker socket exists
 if not test -S "$DOCKER_SOCK"

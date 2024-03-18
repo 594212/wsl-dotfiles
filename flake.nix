@@ -21,7 +21,6 @@
       specialArgs = { inherit inputs; };
       modules = [
         nixos-wsl.nixosModules.wsl
-        ./configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -30,6 +29,7 @@
             imports = [ inputs.nixvim.homeManagerModules.nixvim ./home.nix ];
           };
         }
+        ./configuration.nix
       ];
     };
   };

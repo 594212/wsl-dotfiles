@@ -13,7 +13,6 @@
 
       alias cat="bat --paging=never"
       alias lzg='lazygit'
-      alias lzd='lazydocker'
       alias fzf='sk'
       zoxide init --cmd cd fish | source
     '';
@@ -21,6 +20,10 @@
 
   home.packages = [
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (pkgs.buildEnv {
+      name = "./lzd";
+      paths = [ ./scripts ];
+    })
     pkgs.nixfmt
   ];
   home.file = {

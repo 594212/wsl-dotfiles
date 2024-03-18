@@ -62,11 +62,25 @@
       mapleader = " ";
       maplocalleader = " ";
     };
+    #    extraConfigLua = ''
+    #    '';
 
-    keymaps = [{
-      action = "<cmd>Telescope harpoon marks<CR>";
-      key = "<leader>fh";
-    }];
+    keymaps = [
+      {
+        action = "<cmd>Telescope harpoon marks<CR>";
+        key = "<leader>fh";
+      }
+      {
+        action = "<C-w>";
+        key = "<M-BS>";
+        mode = "i";
+      }
+      {
+        action = "<esc>_<C-q>";
+        key = "<C-q>";
+        mode = "i";
+      }
+    ];
 
     plugins = {
       treesitter.enable = true;
@@ -142,6 +156,7 @@
 
       nvim-autopairs.enable = true;
       indent-o-matic.enable = true;
+      gitsigns.enable = true;
     };
   };
 }

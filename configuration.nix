@@ -32,9 +32,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-
     autoPrune.enable = true;
-
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

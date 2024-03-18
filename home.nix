@@ -21,7 +21,7 @@
   home.packages = [
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     (pkgs.buildEnv {
-      name = "./lzd";
+      name = "scripts";
       paths = [ ./scripts ];
     })
     pkgs.nixfmt

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, programs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "sl";
@@ -98,9 +98,7 @@
       };
       lsp = {
         enable = true;
-        servers = { 
-          nil_ls.enable = true;
-        };
+        servers = { nil_ls.enable = true; };
         keymaps = {
           lspBuf = {
             K = "hover";
@@ -134,15 +132,15 @@
           ];
         };
       };
-      efmls-configs = {
+      none-ls = {
         enable = true;
-        setup.nix.formatter = "nixfmt";
+        sources.formatting.nixfmt.enable = true;
+        enableLspFormat = true;
       };
       lsp-format.enable = true;
 
-           nvim-autopairs.enable = true;
+      nvim-autopairs.enable = true;
       indent-o-matic.enable = true;
     };
   };
 }
-

@@ -5,7 +5,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
 
   wsl = {
     enable = true;
@@ -52,6 +52,7 @@
     starship
     bat
     gcc
+    xsel
   ];
 
   # This value determines the NixOS release from which the default

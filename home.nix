@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   home.username = "sl";
   home.homeDirectory = "/home/sl";
   home.stateVersion = "23.11"; # Please read the comment before changing.
@@ -17,18 +15,10 @@
       zoxide init --cmd cd fish | source
     '';
   };
-
   home.packages = [
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    (pkgs.buildEnv {
-      name = "scripts";
-      paths = [ ./scripts ];
-    })
     pkgs.nixfmt
   ];
-  home.file = {
-
-  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home

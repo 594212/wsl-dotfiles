@@ -12,6 +12,7 @@
       alias cat="bat --paging=never"
       alias lzg='lazygit'
       alias fzf='sk'
+      alias vi='nvim'
       zoxide init --cmd cd fish | source
     '';
   };
@@ -157,6 +158,24 @@
       nvim-autopairs.enable = true;
       indent-o-matic.enable = true;
       gitsigns.enable = true;
+    };
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "sul";
+    userEmail = "su1im69n@gmail.com";
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      dialect = "us";
+      ignored_commands = [ "cd" "ls" "vi" ];
+      search_mode = "skim";
+      show_preview = true;
+      style = "compact";
     };
   };
 }

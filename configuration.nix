@@ -49,6 +49,7 @@
     starship
     bat
     xsel
+    tldr
 
     gcc
     meson

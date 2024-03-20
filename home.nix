@@ -53,6 +53,7 @@
     enable = true;
     userName = "sul";
     userEmail = "su1im69n@gmail.com";
+    extraConfig.init.defaultBranch = "main";
   };
 
   programs.atuin = {

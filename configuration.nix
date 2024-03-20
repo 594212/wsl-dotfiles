@@ -48,8 +48,13 @@
     lazygit
     starship
     bat
-    gcc
     xsel
+
+    gcc
+    meson
+    ninja
+    pkg-config
+    cmake
   ];
 
   # This value determines the NixOS release from which the default

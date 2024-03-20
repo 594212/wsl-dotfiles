@@ -63,7 +63,10 @@
     };
     lsp = {
       enable = true;
-      servers = { nil_ls.enable = true; };
+      servers = {
+        nil_ls.enable = true;
+        clangd.enable = true;
+      };
       keymaps = {
         lspBuf = {
           K = "hover";
